@@ -1,0 +1,17 @@
+server.port= 10002
+
+# jdbc datasource
+spring.datasource.hikari.driver-class-name=oracle.jdbc.OracleDriver
+spring.datasource.hikari.jdbc-url=jdbc:oracle:thin:@//127.0.0.1:1521/ORCL
+spring.datasource.hikari.username=SYSTEM
+spring.datasource.hikari.password=1234
+
+# JDBC spy Datasource
+log4jdbc.spylogdelegator.name=net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator 
+spring.datasource.hikari.driver-class-name=net.sf.log4jdbc.sql.jdbcapi.DriveSpy
+spring.datasource.hikari.jdbc-url=jdbc:log4jdbc:oracle:thin:@//127.0.0.1:1521/ORCL
+spring.datasource.hikari.username=SYSTEM
+spring.datasource.hikari.password=1234
+
+#log level
+logging.level.root=info

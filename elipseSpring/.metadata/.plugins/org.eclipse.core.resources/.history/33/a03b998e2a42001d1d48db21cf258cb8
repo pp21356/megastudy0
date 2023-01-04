@@ -1,0 +1,21 @@
+package com.example.board.controller;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.board.dto.MemberDto;
+
+import lombok.extern.slf4j.Slf4j;
+
+@RestController
+@Slf4j
+public class PostController2 {
+	
+	@PostMapping("/viewtest")
+	public String showView(MemberDto dto) {
+		log.info("----------------");
+		log.info("PostController : showView(): called");
+		log.info("----------------");
+		return "view";
+	}
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" /> 
+<link rel="stylesheet" href="/css/bootstrap.css" type="text/css" />
+<style>
+	@media(max-width: 918px){
+		.writer		{display:none;}
+		.regdate 	{display:none;}
+		.updatedate {display:none;}
+	}
+</style>
+<title>List</title>
+
+</head>
+<body>
+<h1>Page : List</h1>
+<div class="row justify-content-center">
+<div class="col-6">
+	<h3><a href="">글 등록</a></h3>
+	<table class="table table-dark">
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th class="writer">작성자</th>
+				<th class="regdate">작성일</th>
+				<th class="updatedate">수정일</th>
+			</tr>
+		</thead>
+		<tbody>
+		<th:block th:each="board:${list}">
+			<tr th:object="${board}">
+				<td th:text="*{bno}"></td>
+				<td><a th:text="*{title}" th:href="@{/board/get(bno=*{bno})}"></a></td>
+				<td class="writer" th:text="*{writer}"></td>
+				<td class="regdate" th:text="*{regdate}"></td>
+				<td class="updatedate" th:text="*{updatedate}"></td>
+			</tr>
+		</th:block>	
+		</tbody>
+		<tfoot>
+		</tfoot>
+	</table>
+	<div th:object="${pageMaker}">
+		<div style="text-align: center;">
+			<a class="changePage" th:if="*{prev}" th:href="*{startPage-1}"><code>&lt;</code></a>
+			<th:block th:each="num : ${#numbers.sequence(pageMaker.getStartPage(), pageMaker.getEndPage())}">
+				<code th:if="${pageMaker.criteria.getPageNum() == num}" th:text="${num}"></code>
+				<a class="changePage" th:unless="${pageMaker.criteria.getPageNum() == num}" th:href="${num}">
+				<code th:text="${num}"></code></a>
+			</th:block>
+	
+			<a class="changePage" th:if="*{next}" th:href="*{endPage+1}"><code>&gt;</code></a>
+		</div>
+		<form action="/board/list" th:object="${criteria}" name="pageForm">
+			<input type="hidden" name="pageNum" th:field="*{pageNum}">
+			<input type="hidden" name="amount" th:field="*{amount}">
+		</form>
+	</div>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>	
+<script th:inline="javascript">
+	let bno = [[${bno}]];
+	let pageForm = $(document.pageForm);
+	
+	console.log(bno);
+	$(document).ready(function(){
+//		alert("페이지 준비 완료");
+		if(bno == '' || history.state){
+			return;
+		}
+		
+		if(parseInt(bno) > 0){
+			alert("게시글 " + parseInt(bno) + "번이 등록되었습니다.");
+		}
+	});
+	
+	$("a.changePage").click(function(e){
+		alert("ChangePage clicked");
+		e.preventDefault();
+		pageForm.find("input[name='pageNum']").val($(this).attr("href"));
+		pageForm.submit();
+	});
+</script>
+</body>
+
+</html>

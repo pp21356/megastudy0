@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View Test</title>
+</head>
+<body>
+	<h1>여기에는 사실 게시판이 들어가야 됩니다.</h1>
+	
+	<table border="1">
+		<tr>
+			<th>name</th>
+			<th>email</th>
+			<th>organization</th>
+		</tr>
+		<tr>
+			<td th:field="${dto.name}"></td>
+			<td th:text="${dto.email}"></td>
+			<td th:text="${dto.organization}"></td>
+		</tr>
+	</table>
+</body>
+</html>

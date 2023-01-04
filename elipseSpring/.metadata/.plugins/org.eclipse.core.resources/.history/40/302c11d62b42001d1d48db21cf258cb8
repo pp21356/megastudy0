@@ -1,0 +1,23 @@
+package com.example.board.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.board.dto.MemberDto;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Controller
+@Slf4j
+public class PostController2 {
+	
+	@PostMapping("/viewtest")
+	public String showView(@ModelAttribute("dto") MemberDto dto) {
+		log.info("----------------");
+		log.info("PostController : showView(): called");
+		log.info("----------------");
+		return "view";
+	}
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
+<title>Register</title>
+</head>
+<body>
+	<h1>Register 새 글 등록</h1>
+	<form method="post" action="" id="registForm">
+		<h4>제목</h4>
+		<input name="title" placeholder="Title" type="text"> 
+		<h4>내용</h4>
+		<textarea name="content" rows="6" placeholder="Content"></textarea>
+		<h4>작성자</h4>
+		<input name="writer" placeholer="Writer" type="text">
+		<button type="submit">완료</button>
+		
+	</form>
+</body>
+</html>

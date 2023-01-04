@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Kor</th>
+				<th>Eng</th>
+				<th>Math</th>
+				<th>Avg</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="table" th:object="${dto}">
+				<td th:text="*{kor}"></td>
+				<td th:text="*{eng}"></td>
+				<td th:text="*{math}"></td>
+				<td th:text="*{(kor+eng+math)/num}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
+<title>Get</title>
+</head>
+<body>
+	<h1>게시글 수정</h1>
+	<form method="post" action="/board/remove" th:object="${board}">
+	<h4>번호</h4><input name="bno" type="text" th:field="*{bno}" readonly>
+	<h4>제목</h4><input name="title" type="text" th:field="*{title}">
+	<h4>내용</h4>
+	<textarea name="content" rows="6" th:text="*{content}"></textarea>
+	<h4>작성자</h4>
+	<input name="writer" type="text" th:field="*{writer}" readonly>
+	<br>
+	<input type="submit" value="완료">
+	</form>
+</body>
+</html>

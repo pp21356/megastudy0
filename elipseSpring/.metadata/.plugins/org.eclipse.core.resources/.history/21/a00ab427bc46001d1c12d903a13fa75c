@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Kor</th>
+				<th>Eng</th>
+				<th>Math</th>
+				<th>Avg</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:object="${dto}">
+				<td th:text="*{kor}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

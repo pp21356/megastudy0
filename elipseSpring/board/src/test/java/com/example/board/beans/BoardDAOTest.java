@@ -1,0 +1,59 @@
+package com.example.board.beans;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.example.board.beans.dao.BoardDAO;
+import com.example.board.vo.BoardVO;
+
+import lombok.extern.slf4j.Slf4j;
+
+@SpringBootTest
+@Slf4j
+public class BoardDAOTest {
+	
+	@Autowired
+	BoardDAO boardDAO;
+	
+	
+	public void testRegister() {
+		BoardVO board = new BoardVO();
+		board.setTitle("오늘 새로 작성");
+		board.setWriter("Erik기자");
+		board.setContent("진짜임");
+		
+		boardDAO.register(board);
+		log.info("생성된 게시물의 번호: " + board.getBno());
+	}
+	
+	
+	public void testGet() {
+		log.info(boardDAO.get(1L).toString());
+	}
+	
+	
+	public void testGetList() {
+		boardDAO.getList().forEach(board -> log.info(board.toString()));
+	}
+	
+	
+	public void testModify() { //게시물 1번 테스트 
+		
+		BoardVO board = new BoardVO();
+		board.setBno(1L);
+		board.setTitle("내가만든거");
+		board.setContent("내가수정한거");
+		board.setWriter("insung");
+		boardDAO.modify(board);
+		log.info(boardDAO.get(1L).toString());
+	}
+	
+	@Test
+	public void testRemove() {
+		log.info("romove : " + boardDAO.remove(21L));
+	}
+	
+	
+	
+}

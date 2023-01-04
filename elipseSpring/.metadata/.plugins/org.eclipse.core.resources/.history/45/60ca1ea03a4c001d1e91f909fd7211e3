@@ -1,0 +1,26 @@
+package com.example.board.beans;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.example.board.beans.dao.BoardDAO;
+import com.example.board.vo.BoardVO;
+
+import lombok.extern.slf4j.Slf4j;
+
+@SpringBootTest
+@Slf4j
+public class BoardDAOTest {
+	BoardDAO boardDAO;
+	
+	@Test
+	public void testRegister() {
+		BoardVO board = new BoardVO();
+		board.setTitle("오늘 새로 작성");
+		board.setWriter("Erik기자");
+		board.setContent("진짜임");
+		
+		boardDAO.register(board);
+		log.info("생성된 게시물의 번호: " + board.getBno());
+	}
+}

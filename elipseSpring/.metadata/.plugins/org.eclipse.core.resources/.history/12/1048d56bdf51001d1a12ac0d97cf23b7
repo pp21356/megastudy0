@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.board.mappers.ReplyMapper">
+	<insert id="insert">
+		INSERT INTO tb1_reply(rno,bno,reply,replier)
+		values(SEQ_REPLY.nextval, #{bno},#{reply},#{replier})
+	</insert>
+
+	<select id="read">
+		select rno, bno, reply, replier, replydate, updatedate from tb1_reply where bno = #{bno};
+	</select>
+	
+	<delete id="delete">
+		DELETE FROM TB1_REPLY WHERE RNO = ${rno};
+	</delete>
+</mapper>
